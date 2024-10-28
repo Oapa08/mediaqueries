@@ -1,0 +1,221 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: grid;
+    grid-template-areas:
+        "nav"
+        "content";
+    gap: 20px;
+}
+
+.content-wrapper {
+    display: grid;
+    grid-template-areas:
+        "filters"
+        "main-content"
+        "pagination";
+    gap: 20px;
+}
+
+/* Layout for Mobile */
+@media (max-width: 768px) {
+    .nav {
+        grid-area: nav;
+        background-color: #0a74da;
+        color: white;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
+
+    .brand {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    /* Hamburger icon alignment */
+    .hamburger {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        /* Aligns hamburger to the right */
+        cursor: pointer;
+        font-size: 24px;
+        color: white;
+    }
+
+    /* Hide nav-links by default in mobile */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #0a74da;
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* Show nav-links when checkbox is checked */
+    #menu-toggle:checked+.hamburger+.nav-links {
+        display: flex;
+    }
+
+    /* Hide the checkbox */
+    #menu-toggle {
+        display: none;
+    }
+}
+
+/* Layout for Desktop */
+@media (min-width: 768px) {
+    .container {
+        grid-template-columns: 250px 1fr;
+        grid-template-areas:
+            "nav content";
+    }
+
+    .nav {
+        grid-area: nav;
+        background-color: #0a74da;
+        color: white;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        height: 100vh;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hamburger {
+        display: none;
+        /* Hide hamburger icon on desktop */
+    }
+}
+
+/* Filters */
+.filters {
+    background-color: #f1f1f1;
+    padding: 10px;
+}
+
+/* Main Content */
+.main-content {
+    display: grid;
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .main-content {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+.car-card {
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.car-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.car-card button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #0a74da;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.car-card button:hover {
+    background-color: #065aa0;
+}
+
+
+/* Paginación */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    padding: 20px 0;
+}
+
+.pagination a {
+    padding: 10px;
+    background-color: #f1f1f1;
+    color: #0a74da;
+    text-decoration: none;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+}
+
+.pagination a:hover {
+    background-color: #e0e0e0;
+}
+
+.pagination a.active {
+    background-color: #0a74da;
+    color: white;
+    font-weight: bold;
+}
+
+/* Estilos específicos para pantallas de 768px o más */
+@media (min-width: 768px) {
+    .pagination {
+        gap: 5px;
+    }
+
+    .pagination a {
+        padding: 8px 12px;
+        /* Ajusta el padding para hacer los botones más compactos */
+        min-width: auto;
+        /* Elimina el ancho mínimo en escritorio */
+    }
+}
+
+/* Footer */
+.footer {
+    background-color: #0a74da;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+.footer .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
